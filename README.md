@@ -5,7 +5,7 @@
 
 simplest | grids_and_equations | dots_and_chars | ...
 :-: | :-: | :-: | :-:
-<img src="./docs/img/simplest.jpg" height="20" alt="simplest" align=center> | <img src="./docs/img/grids_and_equations.jpg" height="20" alt="grids_and_equations" align=center> | <img src="./docs/img/dots_and_chars.gif" height="20" alt="dots_and_chars" align=center> | ...
+<img src="./test/example/simplest.jpg" height="20" alt="simplest" align=center> | <img src="./test/example/grids_and_equations.jpg" height="20" alt="grids_and_equations" align=center> | <img src="./test/example/dots_and_chars.gif" height="20" alt="dots_and_chars" align=center> | ...
 2348 | 2x6=? | 7RVO | ...
 
 ## 快速入门
@@ -14,7 +14,7 @@ simplest | grids_and_equations | dots_and_chars | ...
 因为所需的 OpenCV 支持模块 [opencv4nodejs](https://github.com/justadudewhohacks/opencv4nodejs) 体积较大，编译过程复杂，请手动安装，或者参考官方的安装指南：
 
 ```bash
-npm i opencv4nodejs -g
+npm i @u4/opencv4nodejs -g
 ```
 
 第三种验证码识别改为用 [sharp](https://github.com/lovell/sharp) 和纯 JavaScript 的 CV 算法来实现，方便在树莓派上运行，但效率相比前两者很低。
@@ -62,7 +62,7 @@ var mode = "simplest";
 ### 已支持
 simplest | grids_and_equations | dots_and_chars
 :-: | :-: | :-:
-<img src="./docs/img/simplest.jpg" height="20" alt="simplest" align=center> | <img src="./docs/img/grids_and_equations.jpg" height="20" alt="grids_and_equations" align=center> | <img src="./docs/img/dots_and_chars.gif" height="20" alt="dots_and_chars" align=center>
+<img src="./test/example/simplest.jpg" height="20" alt="simplest" align=center> | <img src="./test/example/grids_and_equations.jpg" height="20" alt="grids_and_equations" align=center> | <img src="./test/example/dots_and_chars.gif" height="20" alt="dots_and_chars" align=center>
 2348 | 2x6=? | 7RVO
 
 ### 新支持
@@ -74,6 +74,8 @@ codes下的文件夹对应着不同种类的名字（自行命名），你可以
 - opencv4nodejs
     - Github | https://github.com/justadudewhohacks/opencv4nodejs
     - API | https://justadudewhohacks.github.io/opencv4nodejs/docs/Mat/
+- @u4/opencv4nodejs
+    - https://github.com/UrielCh/opencv4nodejs
 - tesseract.js
     - 主页 | https://tesseract.projectnaptha.com/
     - Github | https://github.com/naptha/tesseract.js

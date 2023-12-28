@@ -23,15 +23,23 @@
     "url": "https://github.com/PillarsZhang/captcha-cv-ocr/issues"
   },
   "homepage": "https://github.com/PillarsZhang/captcha-cv-ocr#readme",
+  "files": [
+    "lib",
+    "codes"
+  ],
   "dependencies": {
+    "@lzwme/fe-utils": "^1.5.8",
     "is-url": "^1.2.4",
-    "mathjs": "^9.3.2",
-    "node-fetch": "^2.6.1",
-    "sharp": "^0.28.1",
-    "tesseract.js": "^2.1.4",
+    "mathjs": "^12.2.1",
+    "node-fetch": "^2.7.0",
+    "sharp": "^0.33.1",
+    "tesseract.js": "^5.0.4",
     "tmp": "^0.2.1"
   },
+  "optionalDependencies": {
+    "@img/sharp-win32-x64": "^0.33.1"
+  },
   "peerDependencies": {
-    "opencv4nodejs": ">=5.5.0"
+    "@u4/opencv4nodejs": ">=6.5.0"
   }
 }

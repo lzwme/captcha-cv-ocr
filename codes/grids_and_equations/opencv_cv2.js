@@ -3,7 +3,7 @@
 参考：http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/imgproc/erosion_dilatation/erosion_dilatation.html
 */
 
-const cv = require('opencv4nodejs');
+const cv = require('@u4/opencv4nodejs');
 
 
 cv.imshowscale = (name, image, scale = 10) => cv.imshow(name, image.resize(new cv.Size(image.cols*scale, image.rows*scale), 0, 0, cv.INTER_NEAREST));

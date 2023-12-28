@@ -1,16 +1,17 @@
 "use strict";  
 
-const fs = require("fs");
 const path = require("path");
 const loadImage = require("./lib/loadImage");
+const { logger } = require('./lib/utils');
 
 var modeModule;
 global.debugFlag = 0;
 
-class cvocr {
+class Cvocr {
     constructor(mode = "simplest") {
         try {
-            if (debugFlag) console.log("Debug Mode On!\n");
+            if (global.debugFlag) logger.updateOptions({ levelType: 'debug' });
+            logger.debug("Debug Mode On!\n");
             modeModule = require(path.join(__dirname, "codes", mode));
         }
         catch (err) {
@@ -21,12 +22,13 @@ class cvocr {
     }
     recognize = async (img) => {
         var image = await loadImage(img);
-        if (debugFlag) console.log(`image.length: ${image.length}`);
+        logger.debug(`image.length: ${image.length}`);
         return await modeModule.recognize(image);
     }
-    init = async (workersNum1 = 2, workersNum2 = 1) => {
-        await modeModule.init(workersNum1, workersNum2);
+    init = async (config = [{ num: 2 }, { num: 1 }]) => {
+        await modeModule.init(config);
     }
 }
 
-module.exports = cvocr;
+exports.config = require('./lib/config');
+exports.Cvocr = Cvocr;

@@ -1,4 +1,5 @@
-const tesseract_ocr = require("./tesseract_ocr");
+const { OEM, PSM } = require("tesseract.js");
+const tesseract_ocr = require("../../lib/TesseractOcr");
 const sharp_cv = require("./sharp_cv");
 
 var ocr;
@@ -37,8 +38,17 @@ class dots_and_chars {
         return { result: chars.join(''), time: Date.now() - timeBegin };
     }
 
-    init = async (workers = 4) =>{
-        ocr = new tesseract_ocr(workers)
+    init = async (config = [{ num: 1 }]) =>{
+        ocr = new tesseract_ocr([{
+            num: 1,
+            oem: OEM.TESSERACT_LSTM_COMBINED,
+            params: {
+                tessedit_char_whitelist: '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                tessedit_pageseg_mode: PSM.SINGLE_CHAR,
+            },
+            num: 1,
+            ...config[0],
+        }])
         await ocr.init();
     }
 }

@@ -1,4 +1,4 @@
-const cv = require('opencv4nodejs');
+const cv = require('@u4/opencv4nodejs');
 
 
 cv.imshowscale = (name, image, scale = 10) => cv.imshow(name, image.resize(new cv.Size(image.cols*scale, image.rows*scale), 0, 0, cv.INTER_NEAREST));

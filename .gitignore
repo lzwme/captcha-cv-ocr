@@ -105,3 +105,4 @@ dist
 
 # Tesseract trained data
 *.traineddata
+pnpm-lock.yaml
