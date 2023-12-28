@@ -4,12 +4,12 @@
   "description": "Verification code identification based on OCR (Tesseract) and CV (OpenCV)",
   "main": "index.js",
   "scripts": {
-    "example": "node example.js",
-    "test": "node test.js"
+    "example": "node test/example.js",
+    "test": "node test/judge-case.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PillarsZhang/captcha-cv-ocr.git"
+    "url": "git+https://github.com/renxia/captcha-cv-ocr.git"
   },
   "keywords": [
     "verificationCode",
@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/PillarsZhang/captcha-cv-ocr/issues"
   },
-  "homepage": "https://github.com/PillarsZhang/captcha-cv-ocr#readme",
+  "homepage": "https://github.com/renxia/captcha-cv-ocr#readme",
   "files": [
     "lib",
     "codes"
