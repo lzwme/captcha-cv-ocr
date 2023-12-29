@@ -2,7 +2,7 @@ const { OEM, PSM } = require("tesseract.js");
 const tesseract_ocr = require("../../lib/TesseractOcr");
 const sharp_cv = require("./sharp_cv");
 
-var ocr;
+let ocr;
 const cv = sharp_cv;
 
 class dots_and_chars {
@@ -39,6 +39,7 @@ class dots_and_chars {
     }
 
     init = async (config = [{ num: 1 }]) =>{
+        if (ocr) ocr.autoTerminate();
         ocr = new tesseract_ocr([{
             num: 1,
             oem: OEM.TESSERACT_LSTM_COMBINED,

@@ -29,6 +29,7 @@ class grids_and_equations {
     }
 
     init = async (config = [{ num: 2 }, { num: 1 }]) => {
+        if (ocr) ocr.autoTerminate();
         ocr = new TesseractOcr([{
             uid: 'number',
             num: 2,
