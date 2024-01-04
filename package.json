@@ -3,6 +3,7 @@
   "version": "1.2.0",
   "description": "Verification code identification based on OCR (Tesseract) and CV (OpenCV)",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "serve": "node index.js",
     "example": "node test/example.js",

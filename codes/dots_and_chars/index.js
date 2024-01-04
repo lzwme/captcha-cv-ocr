@@ -1,25 +1,22 @@
 const { OEM, PSM } = require("tesseract.js");
-const tesseract_ocr = require("../../lib/TesseractOcr");
+const TesseractOcr = require("../../lib/TesseractOcr");
 const sharp_cv = require("./sharp_cv");
 
 let ocr;
 const cv = sharp_cv;
 
 class dots_and_chars {
-    recognize = async (image) =>{
-        var timeBegin = Date.now();
-        var cvResult = await cv(image);
+    async recognize(image) {
+        const timeBegin = Date.now();
+        const cvResult = await cv(image);
+
         if (debugFlag) {
             let cvDebugInfo = {result: "length=" + cvResult.result.length, time : cvResult.time}
             console.log("cv", cvDebugInfo)
         }
 
-        var charPromise = [];
-        cvResult.result.forEach((value, index) => {
-            charPromise[index] = ocr.recognize(value); //console.log(value);
-        })
+        const charList = await Promise.all(cvResult.result.map(d => ocr.recognize(d)));
 
-        var charList = await Promise.all(charPromise);
         charList.forEach((value, index) => {
             if (['1', 'I'].includes(value.result)){
                 console.log(`index: ${index}, char: ${value.result}, w: ${cvResult.marks[index].w}, h: ${cvResult.marks[index].h}, h/w: ${cvResult.marks[index].h/cvResult.marks[index].w}`);
@@ -34,13 +31,13 @@ class dots_and_chars {
         })
 
         if (debugFlag) console.log(charList);
-        var chars = charList.map((value, index) => value.result);
+        const chars = charList.map((value) => value.result);
         return { result: chars.join(''), time: Date.now() - timeBegin };
     }
 
-    init = async (config = [{ num: 1 }]) =>{
-        if (ocr) ocr.autoTerminate();
-        ocr = new tesseract_ocr([{
+    async init(config = { num: 1 }) {
+        if (ocr) ocr.terminate();
+        ocr = new TesseractOcr({
             num: 1,
             oem: OEM.TESSERACT_LSTM_COMBINED,
             params: {
@@ -48,9 +45,10 @@ class dots_and_chars {
                 tessedit_pageseg_mode: PSM.SINGLE_CHAR,
             },
             num: 1,
-            ...config[0],
-        }])
+            ...config,
+        });
         await ocr.init();
+        return this;
     }
 }
 
