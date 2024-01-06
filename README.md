@@ -1,5 +1,5 @@
 
-<h1 align="center">CAPTCHA-CV-OCR</h1>
+# @lzwme/captcha-cv-ocr
 
 > 本仓库 Fork 自 [PillarsZhang/captcha-cv-ocr](https://github.com/PillarsZhang/captcha-cv-ocr)
 
