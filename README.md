@@ -22,7 +22,7 @@ npm add @lzwme/captcha-cv-ocr
 因为所需的 OpenCV 支持模块 [@u4/opencv4nodejs](https://github.com/UrielCh/opencv4nodejs) 体积较大，编译过程复杂，请手动安装，或者参考官方的安装指南：
 
 ```bash
-npm i @u4/opencv4nodejs -g
+npm i @u4/opencv4nodejs
 ```
 
 ### 用法

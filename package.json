@@ -41,7 +41,5 @@
   "optionalDependencies": {
     "@img/sharp-win32-x64": "^0.33.1"
   },
-  "peerDependencies": {
-    "@u4/opencv4nodejs": ">=6.5.0"
-  }
+  "peerDependencies": {}
 }
