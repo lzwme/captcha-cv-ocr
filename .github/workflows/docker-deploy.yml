@@ -1,0 +1,83 @@
+name: deploy to docker hub
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+    # branches:
+    #   - 'master'
+
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: ${{ secrets.REGISTRY }}
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  docker-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    -
+      name: Checkout
+      uses: actions/checkout@v4
+    # -
+    #   name: Set up QEMU
+    #   uses: docker/setup-qemu-action@v3
+    # -
+    #   name: Set up Docker Buildx
+    #   uses: docker/setup-buildx-action@v3
+    # 提供 docker 元数据，构建 docker images tag 时使用
+    -
+      name: Extract Docker metadata
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: ${{ env.IMAGE_NAME }}
+        tags: |
+          # set latest tag for default branch
+          type=raw,value=latest,enable={{is_default_branch}}
+          # tag event
+          type=ref,enable=true,priority=600,prefix=,suffix=,event=tag
+    -
+      name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        # registry: ghcr.io # 声明镜像源
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+    -
+      name: Build and push
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        # platforms: linux/amd64,linux/arm64
+        push: ${{ github.event_name != 'pull_request' }}
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+
+    # -
+    #   name: Login to Docker Hub
+    #   run: |
+    #      docker login --username=${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }} ${{ env.REGISTRY }}
+    # -
+    #   name: Build and push Docker Image
+    #   run: |
+    #     docker build -t ${{ env.REGISTRY }}/${{ steps.meta.outputs.tags }} -f Dockerfile .
+    #     docker push ${{ env.REGISTRY }}/${{ steps.meta.outputs.tags }}
+
+    # -
+    #   name: Deploy Docker App
+    #   uses: appleboy/ssh-action@master
+    #   env:
+    #     TZ: Asia/Shanghai
+    #   with:
+    #     host: ${{ secrets.HOST }}
+    #     username: ${{ secrets.HOST_USERNAME }}
+    #     key: ${{ secrets.HOST_SSHKEY }}
+    #     port: ${{ secrets.PORT }}
+    #     script: |
+    #       wget https://raw.githubusercontent.com/${{ env.IMAGE_NAME }}/master/docker/docker-compose.yml
+    #       ls
+    #       cat docker-compose.yml
+    #       docker-compose down -v
+    #       docker-compose up -d

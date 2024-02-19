@@ -6,7 +6,8 @@ COPY codes codes
 COPY lib lib
 COPY package.json .
 COPY index.js .
-COPY eng.traineddata .
+# COPY eng.traineddata .
+ADD https://github.com/tesseract-ocr/tessdata/raw/main/eng.traineddata .
 
 ENV NODE_PATH /usr/local/lib/node_modules
 ENV NODE_ENV production
