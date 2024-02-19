@@ -44,7 +44,7 @@ console.log('codes:', codesList);
     // 其中的 num: 1 表示需要启动的 OCR Worker 数（多线程）
     await cvocr.init([{ num: 1 }]);
     // 支持文件地址、Base64、Buffer形式
-    let ans = await cvocr.recognize("test/example/simplest.jpg"));  
+    let ans = await cvocr.recognize("test/example/simplest.jpg"));
     console.log("ans:", ans)
     process.exit(0);
 })()
@@ -73,9 +73,9 @@ async function httpOcrTest() {
     const body = {
         mode: 'simplest',
         // 验证码图片
-        base64: 'data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUADwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDtNVmn8t5fIluBGGdvJ/fSHHIAPc+n1rlLbXtbt7rTP7Z0+3t7K/m+zxRxEpNCxICeZng+/f1x0rtNVtzp1pJfSXCGytjJxKScBA+ePwNee6f4i0jXNat575w5MoisdOETfI3AEj4GC57DJC/XmprR1SZtGkmtrnZat9tjhA0tEkkJIaWSTMcWPXHOfwqHR9Se+tDDMY0nilaCRwuBlO4Oeh9xTNbns4I4PtUL/YLgMkkzE/uhjgYAJIJyMjFReEovNmvfsJl/soMotyrcA4+fAbnGf1zVKEeT3kc/JFS0Kut6/LpurafYWM0U0k08cc7MN4hDngdOCeT+HStTWtTn0vTJ9Qm82URkEeVIQCScdjxzjtXFarpeu6e2ntdnTLie41KJ/Oy5eSXnYH6fIB2GMV1/iFb5vC1wLeKQ37QBJVWMlOf9ZsyemN+O/TvXR7OklFIil70nchsdR1ODVbe28SW8Mj3isbdkWSQjYMkYZhwQeue3vXolheRfZI/OjnVscCO3ZVx2wPm7Y715d4ZXSx4m06XwqY/LWOVL2VhKAAQPLyWPGW/uc8HPFepxi/8ALX5rTp2Vm/XNVJpPT8jplBJks9nDLEsbplPND49y3P8AM1QubdZrTUFct/o8mxTnJOBkE56ntnriiiipsRLYkjto11Z7dgHhaIuUdVIzv+lTS6XafZf9SORvAPIQ7v4QeAPbp7UUU6YR2KOtWqWNq8sDPjjdG7blbkdc8/rU39l20l4kLhiFAIbPzdW70UVzvc0qbIL3TIreznZXkdM7vLkw46jjJG7H41NY2do9pEzWkGWUE/JRRRFe8zKXwo//2Q==', 
+        base64: 'data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUADwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDtNVmn8t5fIluBGGdvJ/fSHHIAPc+n1rlLbXtbt7rTP7Z0+3t7K/m+zxRxEpNCxICeZng+/f1x0rtNVtzp1pJfSXCGytjJxKScBA+ePwNee6f4i0jXNat575w5MoisdOETfI3AEj4GC57DJC/XmprR1SZtGkmtrnZat9tjhA0tEkkJIaWSTMcWPXHOfwqHR9Se+tDDMY0nilaCRwuBlO4Oeh9xTNbns4I4PtUL/YLgMkkzE/uhjgYAJIJyMjFReEovNmvfsJl/soMotyrcA4+fAbnGf1zVKEeT3kc/JFS0Kut6/LpurafYWM0U0k08cc7MN4hDngdOCeT+HStTWtTn0vTJ9Qm82URkEeVIQCScdjxzjtXFarpeu6e2ntdnTLie41KJ/Oy5eSXnYH6fIB2GMV1/iFb5vC1wLeKQ37QBJVWMlOf9ZsyemN+O/TvXR7OklFIil70nchsdR1ODVbe28SW8Mj3isbdkWSQjYMkYZhwQeue3vXolheRfZI/OjnVscCO3ZVx2wPm7Y715d4ZXSx4m06XwqY/LWOVL2VhKAAQPLyWPGW/uc8HPFepxi/8ALX5rTp2Vm/XNVJpPT8jplBJks9nDLEsbplPND49y3P8AM1QubdZrTUFct/o8mxTnJOBkE56ntnriiiipsRLYkjto11Z7dgHhaIuUdVIzv+lTS6XafZf9SORvAPIQ7v4QeAPbp7UUU6YR2KOtWqWNq8sDPjjdG7blbkdc8/rU39l20l4kLhiFAIbPzdW70UVzvc0qbIL3TIreznZXkdM7vLkw46jjJG7H41NY2do9pEzWkGWUE/JRRRFe8zKXwo//2Q==',
         // slide_match 模式的底图
-        originalBase64: '', 
+        originalBase64: '',
     };
     const result = await fetch('http://localhost:3000/ocr', {
         method: 'post',
@@ -91,14 +91,21 @@ async function httpOcrTest() {
 
 第三种验证码(`dots_and_chars`)识别改为用 [sharp](https://github.com/lovell/sharp) 和纯 JavaScript 的 CV 算法来实现，方便在树莓派上运行，但效率相比前两者很低。
 
+## 基于 docker 快速部署
+
+```bash
+docker pull lzwme/captcha-cv-ocr:latest
+docker run -d -p 3600:3600 lzwme/captcha-cv-ocr
+```
+
 ## 开发
 
 ```bash
-git clone https://github.com/renxia/captcha-cv-ocr
+git clone https://github.com/lzwme/captcha-cv-ocr
 cd captcha-cv-ocr
 npm install
 # 约等于安装为全局模块
-npm link            
+npm link
 ```
 
 ### 测试
@@ -114,12 +121,13 @@ simplest | grids_and_equations | dots_and_chars
 <img src="./test/example/simplest.jpg" height="20" alt="simplest" align=center> | <img src="./test/example/grids_and_equations.jpg" height="20" alt="grids_and_equations" align=center> | <img src="./test/example/dots_and_chars.gif" height="20" alt="dots_and_chars" align=center>
 2348 | 2x6=? | 7RVO
 
-### 新支持
+### 新增支持
 
 codes下的文件夹对应着不同种类的名字（自行命名），你可以参照已有的模板与API创建新的识别库，来适配其他各种验证码。
 
-### 参考文档与额外说明
+## 参考文档与额外说明
 
+- [@u4/opencv4nodejs 依赖安装及编译](https://lzw.me/a/opencv4nodejs-ocr-captcha.html#1%20@u4/opencv4nodejs%20%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85%E5%8F%8A%E7%BC%96%E8%AF%91)
 - opencv4nodejs
     - Github | https://github.com/justadudewhohacks/opencv4nodejs
     - API | https://justadudewhohacks.github.io/opencv4nodejs/docs/Mat/

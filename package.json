@@ -7,11 +7,14 @@
   "scripts": {
     "serve": "node index.js",
     "example": "node test/example.js",
-    "test": "node test/judge-case.js"
+    "test": "node test/judge-case.js",
+    "build": "echo todo",
+    "version": "standard-version",
+    "release": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/renxia/captcha-cv-ocr.git"
+    "url": "git+https://github.com/lzwme/captcha-cv-ocr.git"
   },
   "keywords": [
     "verificationCode",
@@ -20,11 +23,12 @@
     "ocr"
   ],
   "author": "Pillars Zhang <z@pizyds.com> (https://www.pizyds.com/)",
+  "contributors": ["renxia <lzwy0820@qq.com> (https://lzw.me)"],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PillarsZhang/captcha-cv-ocr/issues"
+    "url": "https://github.com/lzwme/captcha-cv-ocr/issues"
   },
-  "homepage": "https://github.com/renxia/captcha-cv-ocr#readme",
+  "homepage": "https://github.com/lzwme/captcha-cv-ocr#readme",
   "files": [
     "lib",
     "codes"
@@ -41,5 +45,7 @@
   "optionalDependencies": {
     "@img/sharp-win32-x64": "^0.33.1"
   },
-  "peerDependencies": {}
+  "devDependencies": {
+    "standard-version": "^9.5.0"
+  }
 }
