@@ -1,6 +1,6 @@
 {
   "name": "@lzwme/captcha-cv-ocr",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Verification code identification based on OCR (Tesseract) and CV (OpenCV)",
   "main": "index.js",
   "type": "commonjs",
@@ -23,7 +23,9 @@
     "ocr"
   ],
   "author": "Pillars Zhang <z@pizyds.com> (https://www.pizyds.com/)",
-  "contributors": ["renxia <lzwy0820@qq.com> (https://lzw.me)"],
+  "contributors": [
+    "renxia <lzwy0820@qq.com> (https://lzw.me)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/lzwme/captcha-cv-ocr/issues"
